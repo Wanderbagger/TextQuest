@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Quest {
     private final int ID;
-    private final List<Decision> DECISIONS = new ArrayList<>();
-    private final String DESCRIPTION;
+    public List<Decision> decisions = new ArrayList<>();
+    public final String DESCRIPTION;
 
     public Quest(int ID, String DESCRIPTION) {
         this.ID = ID;
@@ -19,7 +19,11 @@ public class Quest {
         return ID;
     }
 
-    public List<Decision> getDECISIONS() {
-        return DECISIONS;
+    public List<Decision> getDecisions() {
+        return decisions;
+    }
+
+    public void setDecisions(List<Decision> decisions) {
+        this.decisions = decisions;
     }
 }
