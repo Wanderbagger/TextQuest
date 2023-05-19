@@ -1,7 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Game {
@@ -12,10 +16,12 @@ public class Game {
     int currentQuestId = 1;
 
     public static void main(String[] args) throws IOException {
+
         Player player = new Player("Отважный Гога");
         Game game = new Game(player);
         game.initialize();
         game.play(game);
+
     }
 
     public void play(Game game) throws IOException {
