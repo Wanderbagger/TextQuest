@@ -9,5 +9,12 @@ public class Decision {
         this.NEXT_QUEST_ID = NEXT_QUEST_ID;
     }
 
-
+    @Override
+    public String toString() {
+        return "Decision{" +
+                "ACTION='" + ACTION + '\'' +
+                ", RESULT='" + RESULT + '\'' +
+                ", NEXT_QUEST_ID=" + NEXT_QUEST_ID +
+                '}';
+    }
 }

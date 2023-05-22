@@ -26,4 +26,13 @@ public class Quest {
     public void setDecisions(List<Decision> decisions) {
         this.decisions = decisions;
     }
+
+    @Override
+    public String toString() {
+        return "Quest{" +
+                "ID=" + ID +
+                ", decisions=" + decisions +
+                ", DESCRIPTION='" + DESCRIPTION + '\'' +
+                '}';
+    }
 }

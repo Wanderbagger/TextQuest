@@ -37,27 +37,7 @@ public class Game {
     }
 
     public void initialize(){
-
-        Quest quest = new Quest(1, "Вы видите Власову, что вы хотите сделать?");
-
-        Decision decision = new Decision("Кинуть сапогом", "Идеальное попадание!", 2);
-        quest.decisions.add(decision);
-        decision = new Decision("Ударить кирпичом", "Власова ловко увернулась!", 3);
-        quest.decisions.add(decision);
-        quests.put(1, quest);
-
-        quest = new Quest(2, "Победа!");
-        decision = new Decision("Исполнить победный танец", "Ура!", 0);
-        quest.decisions.add(decision);
-        quests.put(2, quest);
-
-        quest = new Quest(3, "Поражение!");
-        decision = new Decision("Исполнить грустный танец", "Будет и на моей улице праздник!", 0);
-        quest.decisions.add(decision);
-        quests.put(3, quest);
-
-
-        quest = new Quest(0, "Игра окончена!");
+        Quest quest = new Quest(0, "Игра окончена!");
         quests.put(0, quest);
 
     }
