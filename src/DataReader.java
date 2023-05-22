@@ -61,6 +61,24 @@ public class DataReader {
 		return words;
 	}
 
+	private String recognize(List <String> words){
+		int id;
+		int nextQuestId;
+		for (int i = 0; i < words.size(); i++) {
+		 String word = words.get(i);
+		 if(i+1 == words.size() && word.equals("NEXT_QUEST_ID")){
+			 nextQuestId = Integer.parseInt(words.get(i + 1));
+			 break;
+		 } else if (i+1 == words.size() && word.equals("DESCRIPTION")){
+
+		 }
+			switch (word){
+				case "ID":
+					id = Integer.parseInt(words.get(i + 1));
+			}
+		}
+	}
+
 
 
 	private String readDescription(List<String> words, int id) {
