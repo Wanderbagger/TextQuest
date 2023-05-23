@@ -16,12 +16,14 @@ public class Game {
     int currentQuestId = 1;
 
     public static void main(String[] args) throws IOException {
-
+Initializer initializer = new Initializer();
+initializer.read();
+        /*
         Player player = new Player("Отважный Гога");
         Game game = new Game(player);
         game.initialize();
         game.play(game);
-
+*/
     }
 
     public void play(Game game) throws IOException {

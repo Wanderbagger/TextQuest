@@ -61,7 +61,7 @@ public class DataReader {
 		return words;
 	}
 
-	private String recognize(List <String> words){
+/*	private String recognize(List <String> words){
 		int id;
 		int nextQuestId;
 		for (int i = 0; i < words.size(); i++) {
@@ -78,6 +78,8 @@ public class DataReader {
 			}
 		}
 	}
+
+ */
 
 
 
