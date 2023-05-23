@@ -18,36 +18,8 @@ public class Initializer {
             String line = reader.readLine();
             while (line != null) {
                 Initializer initializer = new Initializer();
-                words = initializer.readWord(line);
-                System.out.println(words);
-                initializer.recognize(words);
-            /*
-            int id = 0;
-            String description = "";
-            String action = "";
-            String result = "";
-            int nextQuestId = 0;
-            Decision decision;
-
-
-            for (String word : words) {
-                if (word.equals("ID")) {
-                    id = Integer.parseInt(words.get(words.indexOf(word) + 1));
-                } else if (word.equals("DESCRIPTION")) {
-                    description = dataReader.readDescription(words, (words.indexOf(word) + 1));
-                } else if (word.equals("ACTION")) {
-                    action = "";
-                } else if (word.equals("RESULT")) {
-                    result = "";
-                } else if (word.equals("NEXT_QUEST_ID")) {
-                    nextQuestId = Integer.parseInt(words.get(words.indexOf(word) + 1));
-                    decision = new Decision(action, result, nextQuestId);
-                    Quest quest = new Quest(id, description);
-                    quest.decisions.add(decision);
-                }
-            }
-
-             */
+                System.out.println(line);
+                initializer.recognize(line);
                 line = reader.readLine();
             }
             reader.close();
@@ -70,30 +42,31 @@ public class Initializer {
         }
         return words;
     }
-
-    private void recognize(List<String> words) {
-        String key = "";
+    private void recognize(String line) {
+        String keyword = "";
         String object = "";
 
-        Map<String, String> recognize = new HashMap<>();
-        for (int i = 0; i < words.size(); i++) {
-            if (keywords.contains(words.get(i))) {
-                if(i > 0){
-                    recognize.put(key, object);
-                    object = "";
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if(c == '<'){
+                for (int j = i + 1; j < line.length(); j++) {
+                    c = line.charAt(j);
+                    if(c != '>'){
+                        keyword += c;
+                    } else{
+                        System.out.println(keyword);
+                        i = j;
+                        break;
                 }
-                key = words.get(i);
 
-
-            } else
-
-                {
-                    object += words.get(i);
-                    }
             }
-        System.out.println("!!!" + recognize);
-        }
+
+        } else if (c == '>')
+
     }
+
+    }
+}
 
 
 
