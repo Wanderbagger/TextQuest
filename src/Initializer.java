@@ -27,9 +27,9 @@ public class Initializer {
     }
 
     private void recognize(String line) {
-        String word = "";
+        StringBuilder word = new StringBuilder();
         String keyword = "";
-        String object = "";
+        StringBuilder object = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
             char c = line.charAt(i);
             if (c == '<') {
@@ -40,11 +40,11 @@ public class Initializer {
                     }
                     c = line.charAt(i);
                     if(c != '>'){
-                        word += c;
+                        word.append(c);
                     } else {
                         --i;
-                        keyword = word;
-                        word = "";
+                        keyword = word.toString();
+                        word = new StringBuilder();
                     }
                 }
             } else if (c == '>') {
@@ -56,12 +56,12 @@ public class Initializer {
                     }
                     c = line.charAt(i);
                     if(c != '<'){
-                        object += c;
+                        object.append(c);
                     } else {
                         --i;
-                        object = object.substring(0, object.length() - 1);
-                        dataentry(keyword, object);
-                        object = "";
+                        object = new StringBuilder(object.substring(0, object.length() - 1));
+                        dataentry(keyword, object.toString());
+                        object = new StringBuilder();
                     }
                 }
             }

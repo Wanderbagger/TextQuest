@@ -3,9 +3,8 @@ import java.util.List;
 
 public class Quest {
     private int id;
-    public List<Decision> decisions = new ArrayList<>();
     public  String description;
-
+    public List<Decision> decisions = new ArrayList<>();
     public String getDescription() {
         return description;
     }
@@ -34,8 +33,8 @@ public class Quest {
     public String toString() {
         return "Quest{" +
                 "id=" + id +
-                ", decisions=" + decisions +
                 ", description='" + description + '\'' +
+                ", decisions=" + decisions +
                 '}';
     }
 }
