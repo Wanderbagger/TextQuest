@@ -4,15 +4,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class Initializer {
-    List<String> keywords = Arrays.asList("ID", "DESCRIPTION","ACTION", "RESULT", "NEXT_QUEST_ID");
-    List<String> descriptionKeywords = Arrays.asList();
-    List<String> words;
-
+    Quest quest = new Quest();
+    Decision decision = new Decision();
+    List<Decision> decisions = new ArrayList<>();
 
     public void read() {
         Map<Integer, Quest> quests = new HashMap<>();
         BufferedReader reader;
-        DataReader dataReader = new DataReader();
         try {
             reader = new BufferedReader(new FileReader("C:\\SQL\\12.txt"));
             String line = reader.readLine();
@@ -28,6 +26,72 @@ public class Initializer {
         }
     }
 
+    private void recognize(String line) {
+        String word = "";
+        String keyword = "";
+        String object = "";
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+            if (c == '<') {
+                while (c != '>'){
+                    i++;
+                    if(i==line.length()){
+                        break;
+                    }
+                    c = line.charAt(i);
+                    if(c != '>'){
+                        word += c;
+                    } else {
+                        --i;
+                        keyword = word;
+                        word = "";
+                    }
+                }
+            } else if (c == '>') {
+                i++;
+                while (c != '<'){
+                    i++;
+                    if(i==line.length()){
+                        break;
+                    }
+                    c = line.charAt(i);
+                    if(c != '<'){
+                        object += c;
+                    } else {
+                        --i;
+                        object = object.substring(0, object.length() - 1);
+                        dataentry(keyword, object);
+                        object = "";
+                    }
+                }
+            }
+        }
+quest.setDecisions(decisions);
+        System.out.println(quest);
+    }
+    private void dataentry(String keyword, String object){
+    switch (keyword){
+        case "ID":
+            quest.setId(Integer.parseInt(object));
+            break;
+        case "DESCRIPTION":
+            quest.setDescription(object);
+            break;
+        case "ACTION":
+            decision.setAction(object);
+            break;
+        case "RESULT":
+            decision.setResult(object);
+            break;
+        case "NEXT_QUEST_ID":
+            decision.setNextQuestId(Integer.parseInt(object));
+            decisions.add(decision);
+            decision = new Decision();
+            break;
+    }
+    }
+
+
     private List<String> readWord(String line) {
         String word = "";
         List<String> words = new ArrayList<>();
@@ -41,30 +105,6 @@ public class Initializer {
             }
         }
         return words;
-    }
-    private void recognize(String line) {
-        String keyword = "";
-        String object = "";
-
-        for (int i = 0; i < line.length(); i++) {
-            char c = line.charAt(i);
-            if(c == '<'){
-                for (int j = i + 1; j < line.length(); j++) {
-                    c = line.charAt(j);
-                    if(c != '>'){
-                        keyword += c;
-                    } else{
-                        System.out.println(keyword);
-                        i = j;
-                        break;
-                }
-
-            }
-
-        } else if (c == '>')
-
-    }
-
     }
 }
 

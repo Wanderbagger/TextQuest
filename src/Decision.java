@@ -1,20 +1,27 @@
 public class Decision {
-    public final String ACTION;
-    public String RESULT;
-    public int NEXT_QUEST_ID;
+    public String action;
+    public String result;
+    public int nextQuestId;
 
-    public Decision(String ACTION, String RESULT, int NEXT_QUEST_ID) {
-        this.ACTION = ACTION;
-        this.RESULT = RESULT;
-        this.NEXT_QUEST_ID = NEXT_QUEST_ID;
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public void setNextQuestId(int nextQuestId) {
+        this.nextQuestId = nextQuestId;
     }
 
     @Override
     public String toString() {
         return "Decision{" +
-                "ACTION='" + ACTION + '\'' +
-                ", RESULT='" + RESULT + '\'' +
-                ", NEXT_QUEST_ID=" + NEXT_QUEST_ID +
+                "ACTION='" + action + '\'' +
+                ", RESULT='" + result + '\'' +
+                ", NEXT_QUEST_ID=" + nextQuestId +
                 '}';
     }
 }

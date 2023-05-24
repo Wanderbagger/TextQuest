@@ -2,21 +2,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Quest {
-    private final int ID;
+    private int id;
     public List<Decision> decisions = new ArrayList<>();
-    public final String DESCRIPTION;
+    public  String description;
 
-    public Quest(int ID, String DESCRIPTION) {
-        this.ID = ID;
-        this.DESCRIPTION = DESCRIPTION;
+    public String getDescription() {
+        return description;
     }
 
-    public String getDESCRIPTION() {
-        return DESCRIPTION;
+    public int getId() {
+        return id;
     }
 
-    public int getID() {
-        return ID;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Decision> getDecisions() {
@@ -30,9 +33,9 @@ public class Quest {
     @Override
     public String toString() {
         return "Quest{" +
-                "ID=" + ID +
+                "id=" + id +
                 ", decisions=" + decisions +
-                ", DESCRIPTION='" + DESCRIPTION + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

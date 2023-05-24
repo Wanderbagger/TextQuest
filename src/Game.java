@@ -1,11 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Game {
@@ -18,6 +14,7 @@ public class Game {
     public static void main(String[] args) throws IOException {
 Initializer initializer = new Initializer();
 initializer.read();
+
         /*
         Player player = new Player("Отважный Гога");
         Game game = new Game(player);
@@ -38,23 +35,18 @@ initializer.read();
 
     }
 
-    public void initialize(){
-        Quest quest = new Quest(0, "Игра окончена!");
-        quests.put(0, quest);
-
-    }
 
     public int completeQuets(int currentQuestId){
         currentQuest = quests.get(currentQuestId);
-        System.out.println(currentQuest.DESCRIPTION);
+        System.out.println(currentQuest.description);
         for (int i = 0; i < currentQuest.decisions.size(); i++) {
-            System.out.println(i + ". " + currentQuest.getDecisions().get(i).ACTION);
+            System.out.println(i + ". " + currentQuest.getDecisions().get(i).action);
         }
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             int input = Integer.parseInt(reader.readLine());
-            System.out.println(currentQuest.getDecisions().get(input).RESULT);
-            return currentQuest.getDecisions().get(input).NEXT_QUEST_ID;
+            System.out.println(currentQuest.getDecisions().get(input).result);
+            return currentQuest.getDecisions().get(input).nextQuestId;
 
         } catch (Exception e) {
             System.out.println("Ошибка");
