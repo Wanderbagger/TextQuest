@@ -4,29 +4,33 @@ import java.io.IOException;
 import java.util.*;
 
 public class Initializer {
+    int id = 0;
     Quest quest = new Quest();
     Decision decision = new Decision();
     List<Decision> decisions = new ArrayList<>();
+    List <Quest> quests = new ArrayList<>();
 
-    public void read() {
-        Map<Integer, Quest> quests = new HashMap<>();
+    public List <Quest> read() {
+
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader("C:\\SQL\\12.txt"));
             String line = reader.readLine();
             while (line != null) {
                 Initializer initializer = new Initializer();
-                System.out.println(line);
-                initializer.recognize(line);
+                quests.add(initializer.recognize(line));
+
                 line = reader.readLine();
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+return quests;
+
     }
 
-    private void recognize(String line) {
+    private Quest recognize(String line) {
         StringBuilder word = new StringBuilder();
         String keyword = "";
         StringBuilder object = new StringBuilder();
@@ -67,7 +71,8 @@ public class Initializer {
             }
         }
         quest.setDecisions(decisions);
-        System.out.println(quest);
+        id = quest.getId();
+        return quest;
     }
     private void dataentry(String keyword, String object){
         switch (keyword){
@@ -89,22 +94,6 @@ public class Initializer {
                 decision = new Decision();
                 break;
         }
-    }
-
-
-    private List<String> readWord(String line) {
-        String word = "";
-        List<String> words = new ArrayList<>();
-        for (int i = 0; i < line.length(); i++) {
-            char c = line.charAt(i);
-            word += c;
-            if (i + 1 == line.length() || line.charAt(i + 1) == ' ') {
-                words.add(word);
-                word = "";
-                ++i;
-            }
-        }
-        return words;
     }
 }
 

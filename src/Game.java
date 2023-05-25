@@ -1,19 +1,31 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Game {
-    Map<Integer, Quest> quests = new HashMap<>();
+
+
+    List<Quest> quests = new ArrayList<>();
     Player player;
     private boolean isGameStopped = false;
     Quest currentQuest;
     int currentQuestId = 1;
 
     public static void main(String[] args) throws IOException {
-Initializer initializer = new Initializer();
-initializer.read();
+        Player player = new Player("Отважный Гога");
+        Game game = new Game(player);
+        Initializer initializer = new Initializer();
+game.setQuests(initializer.read());
+        System.out.println(game.getQuests());
+
+
+
+
+
 
         /*
         Player player = new Player("Отважный Гога");
@@ -55,4 +67,11 @@ initializer.read();
 
     }
 
+    public void setQuests(List <Quest> quests) {
+        this.quests = quests;
+    }
+
+    public List<Quest> getQuests() {
+        return quests;
+    }
 }
