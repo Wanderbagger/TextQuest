@@ -51,7 +51,7 @@ public class Initializer {
                 i++;
                 while (c != '<'){
                     i++;
-                    if(i==line.length()){
+                    if(i > line.length() ){
                         break;
                     }
                     c = line.charAt(i);
@@ -66,29 +66,29 @@ public class Initializer {
                 }
             }
         }
-quest.setDecisions(decisions);
+        quest.setDecisions(decisions);
         System.out.println(quest);
     }
     private void dataentry(String keyword, String object){
-    switch (keyword){
-        case "ID":
-            quest.setId(Integer.parseInt(object));
-            break;
-        case "DESCRIPTION":
-            quest.setDescription(object);
-            break;
-        case "ACTION":
-            decision.setAction(object);
-            break;
-        case "RESULT":
-            decision.setResult(object);
-            break;
-        case "NEXT_QUEST_ID":
-            decision.setNextQuestId(Integer.parseInt(object));
-            decisions.add(decision);
-            decision = new Decision();
-            break;
-    }
+        switch (keyword){
+            case "ID":
+                quest.setId(Integer.parseInt(object));
+                break;
+            case "DESCRIPTION":
+                quest.setDescription(object);
+                break;
+            case "ACTION":
+                decision.setAction(object);
+                break;
+            case "RESULT":
+                decision.setResult(object);
+                break;
+            case "NEXT_QUEST_ID":
+                decision.setNextQuestId(Integer.parseInt(object));
+                decisions.add(decision);
+                decision = new Decision();
+                break;
+        }
     }
 
 
@@ -107,7 +107,6 @@ quest.setDecisions(decisions);
         return words;
     }
 }
-
 
 
 
