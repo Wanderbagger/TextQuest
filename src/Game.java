@@ -9,46 +9,32 @@ import java.util.Map;
 public class Game {
 
 
-    List<Quest> quests = new ArrayList<>();
-    Player player;
-    private boolean isGameStopped = false;
-    Quest currentQuest;
-    int currentQuestId = 1;
+    Map <Integer, Quest> quests = new HashMap<>(); // Хэшмэп для хранения всех квестов.
+    Player player;  // заготовка для класса игрока
+    boolean isGameStopped = false; // заготовка под остановку игры
+    Quest currentQuest; // текущий квест = заготовка для сохранения/загрузки
+    int currentQuestId = 1; // инициализировали поле номером текущего квеста
+
+    public Game(Player player) {
+        this.player = player;
+    }
 
     public static void main(String[] args) throws IOException {
         Player player = new Player("Отважный Гога");
         Game game = new Game(player);
         Initializer initializer = new Initializer();
-game.setQuests(initializer.read());
-        System.out.println(game.getQuests());
-
-
-
-
-
-
-        /*
-        Player player = new Player("Отважный Гога");
-        Game game = new Game(player);
-        game.initialize();
+        game.setQuests(initializer.read()); // инициализация игры = считывание квестов из текстового файла
         game.play(game);
-*/
     }
 
-    public void play(Game game) throws IOException {
+    public void play(Game game) throws IOException { //игра идет,  пока не вернулся айдишник 0 или меньше
         while (currentQuestId > 0){
             currentQuestId = completeQuets(currentQuestId);
         }
         game.isGameStopped = true;
     }
 
-    public Game(Player player) {
-        this.player = player;
-
-    }
-
-
-    public int completeQuets(int currentQuestId){
+    public int completeQuets(int currentQuestId){ // непосредственный механизм проигрывания квестов
         currentQuest = quests.get(currentQuestId);
         System.out.println(currentQuest.description);
         for (int i = 0; i < currentQuest.decisions.size(); i++) {
@@ -67,11 +53,11 @@ game.setQuests(initializer.read());
 
     }
 
-    public void setQuests(List <Quest> quests) {
-        this.quests = quests;
+    public Map<Integer, Quest> getQuests() {
+        return quests;
     }
 
-    public List<Quest> getQuests() {
-        return quests;
+    public void setQuests(Map<Integer, Quest> quests) {
+        this.quests = quests;
     }
 }

@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -8,17 +9,19 @@ public class Initializer {
     Quest quest = new Quest();
     Decision decision = new Decision();
     List<Decision> decisions = new ArrayList<>();
-    List <Quest> quests = new ArrayList<>();
+    Map <Integer, Quest> quests = new HashMap<>();
 
-    public List <Quest> read() {
+    public Map <Integer, Quest> read() { // построчное считывание квестов из файла
 
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader("C:\\SQL\\12.txt"));
+            File f = new File("src/quests.txt");
+            reader = new BufferedReader(new FileReader(f));
             String line = reader.readLine();
             while (line != null) {
                 Initializer initializer = new Initializer();
-                quests.add(initializer.recognize(line));
+                quest = initializer.recognize(line); // построчное распознавание квестов
+                quests.put(quest.getId(), quest); // распознали - вставили в массив
 
                 line = reader.readLine();
             }
@@ -26,36 +29,35 @@ public class Initializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-return quests;
-
+        return quests;
     }
 
-    private Quest recognize(String line) {
+    private Quest recognize(String line) { // распознавание
         StringBuilder word = new StringBuilder();
         String keyword = "";
         StringBuilder object = new StringBuilder();
-        for (int i = 0; i < line.length(); i++) {
+        for (int i = 0; i < line.length(); i++) { //перебираем строчку по символу
             char c = line.charAt(i);
-            if (c == '<') {
-                while (c != '>'){
+            if (c == '<') { //  нашли открытие треугольной скобки
+                while (c != '>'){ //считываем пока не встретим закрытие
                     i++;
                     if(i==line.length()){
                         break;
                     }
                     c = line.charAt(i);
                     if(c != '>'){
-                        word.append(c);
+                        word.append(c); // добавление символов к слову
                     } else {
                         --i;
-                        keyword = word.toString();
+                        keyword = word.toString(); // внесли знаение слова в значение ключа
                         word = new StringBuilder();
                     }
                 }
-            } else if (c == '>') {
+            } else if (c == '>') { // после закрытия скобки считываем значение объекта
                 i++;
                 while (c != '<'){
                     i++;
-                    if(i > line.length() ){
+                    if(i >= line.length() ){
                         break;
                     }
                     c = line.charAt(i);
@@ -64,7 +66,7 @@ return quests;
                     } else {
                         --i;
                         object = new StringBuilder(object.substring(0, object.length() - 1));
-                        dataentry(keyword, object.toString());
+                        dataentry(keyword, object.toString()); // активировали ввод данных в переменные
                         object = new StringBuilder();
                     }
                 }

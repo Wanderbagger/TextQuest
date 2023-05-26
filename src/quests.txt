@@ -1,0 +1,4 @@
+<ID> 1 <DESCRIPTION> Вы видите Власову, что вы хотите сделать? <ACTION> Кинуть сапогом <RESULT> Идеальное попадание! <NEXT_QUEST_ID> 2 <ACTION> Ударить кирпичом <RESULT> Власова ловко увернулась! <NEXT_QUEST_ID> 3 <END> 
+<ID> 2 <DESCRIPTION> Победа! <ACTION> Исполнить победный танец <RESULT> Ура! <NEXT_QUEST_ID> 0 <END> 
+<ID> 3 <DESCRIPTION> Поражение! <ACTION> Исполнить грустный танец <RESULT> Будет и на моей улице праздник! <NEXT_QUEST_ID> 0 <END> 
+<ID> 0 <DESCRIPTION> Игра окончена! <END>

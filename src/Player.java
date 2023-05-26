@@ -1,4 +1,4 @@
-public class Player {
+public class Player { // заготовка под игрока
    private String name;
 
     public Player(String name) {
