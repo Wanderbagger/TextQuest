@@ -44,6 +44,9 @@ public class Game {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             int input = Integer.parseInt(reader.readLine());
             System.out.println(currentQuest.getDecisions().get(input).result);
+            if(currentQuest.getDecisions().get(input).item != null){
+                System.out.println("Найден предмет : " + currentQuest.getDecisions().get(input).item);
+            }
             return currentQuest.getDecisions().get(input).nextQuestId;
 
         } catch (Exception e) {

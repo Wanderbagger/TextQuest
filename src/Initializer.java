@@ -90,6 +90,9 @@ public class Initializer {
             case "RESULT":
                 decision.setResult(object);
                 break;
+            case "FOUND_ITEM":
+                decision.setItem(new Item(object));
+                break;
             case "NEXT_QUEST_ID":
                 decision.setNextQuestId(Integer.parseInt(object));
                 decisions.add(decision);
@@ -98,7 +101,6 @@ public class Initializer {
         }
     }
 }
-
 
 
 
