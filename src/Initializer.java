@@ -91,7 +91,10 @@ public class Initializer {
                 decision.setResult(object);
                 break;
             case "FOUND_ITEM":
-                decision.setItem(new Item(object));
+                decision.setGetItem(new Item(object));
+                break;
+            case "LOST_ITEM":
+                decision.setLostItem(new Item(object));
                 break;
             case "NEXT_QUEST_ID":
                 decision.setNextQuestId(Integer.parseInt(object));

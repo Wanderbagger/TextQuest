@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Game {
@@ -44,8 +42,14 @@ public class Game {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             int input = Integer.parseInt(reader.readLine());
             System.out.println(currentQuest.getDecisions().get(input).result);
-            if(currentQuest.getDecisions().get(input).item != null){
-                System.out.println("Найден предмет : " + currentQuest.getDecisions().get(input).item);
+            if(currentQuest.getDecisions().get(input).getItem != null){
+                player.addToInventory(currentQuest.getDecisions().get(input).getItem);
+                System.out.println("Найден предмет : " + currentQuest.getDecisions().get(input).getItem);
+                player.printInventory();
+            }
+            if(currentQuest.getDecisions().get(input).lostItem != null){
+                player.removeItemFromInventory(currentQuest.getDecisions().get(input).lostItem);
+
             }
             return currentQuest.getDecisions().get(input).nextQuestId;
 

@@ -2,7 +2,8 @@ public class Decision {
     public String action;
     public String result;
     public int nextQuestId;
-    public Item item = null;
+    public Item getItem = null;
+    public Item lostItem = null;
 
 
 
@@ -18,8 +19,12 @@ public class Decision {
         this.nextQuestId = nextQuestId;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setGetItem(Item getItem) {
+        this.getItem = getItem;
+    }
+
+    public void setLostItem(Item lostItem) {
+        this.lostItem = lostItem;
     }
 
     @Override
@@ -28,7 +33,7 @@ public class Decision {
                 "action='" + action + '\'' +
                 ", result='" + result + '\'' +
                 ", nextQuestId=" + nextQuestId +
-                ", item=" + item +
+                ", item=" + getItem +
                 '}';
     }
 }
