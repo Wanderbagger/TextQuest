@@ -3,8 +3,9 @@ import java.util.List;
 
 public class Quest {
     private int id;
-    public  String description;
-    public List<Decision> decisions = new ArrayList<>();
+    private String description;
+    private List<Decision> decisions = new ArrayList<>();
+
     public String getDescription() {
         return description;
     }

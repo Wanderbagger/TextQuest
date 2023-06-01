@@ -12,6 +12,10 @@ public class Player { // заготовка под игрока
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -37,16 +41,10 @@ public class Player { // заготовка под игрока
     }
 
     public void removeItemFromInventory(String item) {
-        if (inventory.containsKey(item)) {
-            inventory.remove(item);
-        }
+        inventory.remove(item);
     }
 
     public boolean checkInventory(String item) {
-        if (inventory.containsKey(item)) {
-            return true;
-        } else {
-            return false;
-        }
+        return inventory.containsKey(item);
     }
 }

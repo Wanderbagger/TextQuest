@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Game {
-
-
     Map <Integer, Quest> quests = new HashMap<>(); // Хэшмэп для хранения всех квестов.
     Player player;  // заготовка для класса игрока
     boolean isGameStopped = false; // заготовка под остановку игры
@@ -21,7 +19,7 @@ public class Game {
         Player player = new Player("Отважный Гога");
         Game game = new Game(player);
         Initializer initializer = new Initializer();
-        game.setQuests(initializer.read()); // инициализация игры = считывание квестов из текстового файла
+        game.setQuests(initializer.read(player.getName())); // инициализация игры = считывание квестов из текстового файла
         game.play(game);
     }
 
@@ -34,15 +32,14 @@ public class Game {
 
     public int completeQuets(int currentQuestId){ // непосредственный механизм проигрывания квестов
         currentQuest = quests.get(currentQuestId);
-        System.out.println(currentQuest.description);
-        for (int i = 0; i < currentQuest.decisions.size(); i++) {
+        System.out.println(currentQuest.getDescription());
+        for (int i = 0; i < currentQuest.getDecisions().size(); i++) {
             System.out.println(i + ". " + currentQuest.getDecisions().get(i).getAction());
         }
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             int input = Integer.parseInt(reader.readLine());
             Decision currentDecision = currentQuest.getDecisions().get(input);
-
             if(currentDecision.isGetItem()){
                 player.addToInventory(currentDecision.getItem());
                 System.out.println("Найден предмет : " + currentDecision.getItem());
@@ -67,7 +64,6 @@ public class Game {
             System.out.println("Ошибка");
             return 0;
         }
-
     }
 
     public Map<Integer, Quest> getQuests() {
