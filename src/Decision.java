@@ -1,11 +1,43 @@
 public class Decision {
-    public String action;
-    public String result;
-    public int nextQuestId;
-    public Item getItem = null;
-    public Item lostItem = null;
+    private String action;
+    private String result;
+    private String item;
+    private int nextQuestId;
+    private boolean getItem = false;
+    private boolean lostItem = false;
+    private boolean checkItem = false;
 
+    public String getItem() {
+        return item;
+    }
 
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public int getNextQuestId() {
+        return nextQuestId;
+    }
+
+    public boolean isGetItem() {
+        return getItem;
+    }
+
+    public boolean isLostItem() {
+        return lostItem;
+    }
+
+    public boolean isCheckItem() {
+        return checkItem;
+    }
 
     public void setAction(String action) {
         this.action = action;
@@ -19,12 +51,16 @@ public class Decision {
         this.nextQuestId = nextQuestId;
     }
 
-    public void setGetItem(Item getItem) {
+    public void setGetItem(boolean getItem) {
         this.getItem = getItem;
     }
 
-    public void setLostItem(Item lostItem) {
+    public void setLostItem(boolean lostItem) {
         this.lostItem = lostItem;
+    }
+
+    public void setCheckItem(boolean checkItem) {
+        this.checkItem = checkItem;
     }
 
     @Override

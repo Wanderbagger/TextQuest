@@ -41,4 +41,12 @@ public class Player { // заготовка под игрока
             inventory.remove(item);
         }
     }
+
+    public boolean checkInventory(String item) {
+        if (inventory.containsKey(item)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

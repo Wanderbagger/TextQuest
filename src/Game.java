@@ -36,22 +36,32 @@ public class Game {
         currentQuest = quests.get(currentQuestId);
         System.out.println(currentQuest.description);
         for (int i = 0; i < currentQuest.decisions.size(); i++) {
-            System.out.println(i + ". " + currentQuest.getDecisions().get(i).action);
+            System.out.println(i + ". " + currentQuest.getDecisions().get(i).getAction());
         }
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             int input = Integer.parseInt(reader.readLine());
-            System.out.println(currentQuest.getDecisions().get(input).result);
-            if(currentQuest.getDecisions().get(input).getItem != null){
-                player.addToInventory(currentQuest.getDecisions().get(input).getItem);
-                System.out.println("Найден предмет : " + currentQuest.getDecisions().get(input).getItem);
-                player.printInventory();
-            }
-            if(currentQuest.getDecisions().get(input).lostItem != null){
-                player.removeItemFromInventory(currentQuest.getDecisions().get(input).lostItem);
+            Decision currentDecision = currentQuest.getDecisions().get(input);
 
+            if(currentDecision.isGetItem()){
+                player.addToInventory(currentDecision.getItem());
+                System.out.println("Найден предмет : " + currentDecision.getItem());
+                player.printInventory();
+            } else if (currentDecision.isLostItem()){
+                player.removeItemFromInventory(currentDecision.getItem());
+                player.printInventory();
+            } else if (currentDecision.isCheckItem()){
+                if(player.checkInventory(currentDecision.getItem())){
+                    System.out.println("У вас в инвентаре есть " + currentDecision.getItem());
+                    System.out.println(currentDecision.getResult());
+                    return currentDecision.getNextQuestId();
+                } else {
+                    System.out.println("У вас в инвентаре нет " + currentDecision.getItem());
+                    return currentQuest.getId();
+                }
             }
-            return currentQuest.getDecisions().get(input).nextQuestId;
+            System.out.println(currentDecision.getResult());
+            return currentDecision.getNextQuestId();
 
         } catch (Exception e) {
             System.out.println("Ошибка");
