@@ -112,6 +112,15 @@ public class Initializer {
                 decision.setCheckItem(true);
                 decision.setItem(object);
             }
+            case "ENEMY_NAME" -> {
+                decision.setFightDecision(true);
+                decision.setEnemyHealth(Integer.parseInt(object));
+            }
+
+            case "ENEMY_HEALTH" -> {
+                decision.setFightDecision(true);
+                decision.setEnemyHealth(Integer.parseInt(object));
+            }
             case "NEXT_QUEST_ID" -> {
                 decision.setNextQuestId(Integer.parseInt(object));
                 decisions.add(decision);

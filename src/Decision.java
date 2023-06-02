@@ -3,9 +3,12 @@ public class Decision {
     private String result;
     private String item;
     private int nextQuestId;
+    private int enemyHealth;
+    private String enemyName;
     private boolean getItem = false;
     private boolean lostItem = false;
     private boolean checkItem = false;
+    private boolean isFightDecision = false;
 
     public String getItem() {
         return item;
@@ -39,6 +42,22 @@ public class Decision {
         return checkItem;
     }
 
+    public boolean isFightDecision() {
+        return isFightDecision;
+    }
+
+    public int getEnemyHealth() {
+        return enemyHealth;
+    }
+
+    public String getEnemyName() {
+        return enemyName;
+    }
+
+    public void setEnemyName(String enemyName) {
+        this.enemyName = enemyName;
+    }
+
     public void setAction(String action) {
         this.action = action;
     }
@@ -61,6 +80,14 @@ public class Decision {
 
     public void setCheckItem(boolean checkItem) {
         this.checkItem = checkItem;
+    }
+
+    public void setFightDecision(boolean fightDecision) {
+        isFightDecision = fightDecision;
+    }
+
+    public void setEnemyHealth(int enemyHealth) {
+        this.enemyHealth = enemyHealth;
     }
 
     @Override

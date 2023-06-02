@@ -10,6 +10,7 @@ public class Game {
     boolean isGameStopped = false; // заготовка под остановку игры
     Quest currentQuest; // текущий квест = заготовка для сохранения/загрузки
     int currentQuestId = 1; // инициализировали поле номером текущего квеста
+    Enemy currentEnemy;
 
     public Game(Player player) {
         this.player = player;
@@ -56,6 +57,14 @@ public class Game {
                     System.out.println("У вас в инвентаре нет " + currentDecision.getItem());
                     return currentQuest.getId();
                 }
+            } else if(currentDecision.isFightDecision()){
+                currentEnemy = new Enemy(currentDecision.getEnemyName(), currentDecision.getEnemyHealth());
+
+                if(winFight(currentEnemy)){
+                    return currentDecision.getNextQuestId();
+                } else {
+                    return currentQuest.getId();
+                }
             }
             System.out.println(currentDecision.getResult());
             return currentDecision.getNextQuestId();
@@ -64,6 +73,10 @@ public class Game {
             System.out.println("Ошибка");
             return 0;
         }
+    }
+
+    public boolean winFight(Enemy enemy){
+        return true;
     }
 
     public Map<Integer, Quest> getQuests() {
