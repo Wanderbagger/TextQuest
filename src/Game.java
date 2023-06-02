@@ -60,7 +60,7 @@ public class Game {
             } else if(currentDecision.isFightDecision()){
                 currentEnemy = new Enemy(currentDecision.getEnemyName(), currentDecision.getEnemyHealth());
 
-                if(winFight(currentEnemy)){
+                if(winFight(player, currentEnemy)){
                     return currentDecision.getNextQuestId();
                 } else {
                     return currentQuest.getId();
@@ -75,7 +75,14 @@ public class Game {
         }
     }
 
-    public boolean winFight(Enemy enemy){
+    public boolean winFight(Player player, Enemy enemy){
+        int roundNum = 0;
+        System.out.println("Да начнется битва!");
+        while (player.getHealth() > 0 || enemy.getHealth() > 0){
+            ++roundNum;
+            System.out.println("РАУНД № " + roundNum);
+            System.out.println("Выберите действие: ");
+        }
         return true;
     }
 

@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Player { // заготовка под игрока
    private String name;
+   private int health;
    private Map<String, Integer> inventory = new HashMap<>();
 
 
@@ -18,6 +19,14 @@ public class Player { // заготовка под игрока
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public void addToInventory(String item){
