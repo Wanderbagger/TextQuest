@@ -3,10 +3,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Player { // заготовка под игрока
+public class Player extends Person{ // заготовка под игрока
    private String name;
    private int health;
    private Map<String, Integer> inventory = new HashMap<>();
+    private List<Attack> attackList = generateStandartattackList();
+
 
 
     public Player(String name) {
@@ -56,4 +58,6 @@ public class Player { // заготовка под игрока
     public boolean checkInventory(String item) {
         return inventory.containsKey(item);
     }
+
+
 }

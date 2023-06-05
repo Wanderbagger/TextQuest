@@ -1,11 +1,17 @@
-public class Enemy {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Enemy extends Person {
     private String name;
     private int health;
+    private List<Attack> attackList;
 
-
-    public Enemy(String name, int health) {
+    public Enemy(String name, int health, List<Attack> attackList) {
         this.name = name;
         this.health = health;
+        attackList = generateStandartattackList();
     }
 
     public int getHealth() {
@@ -23,4 +29,6 @@ public class Enemy {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

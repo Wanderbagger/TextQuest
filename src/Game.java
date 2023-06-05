@@ -58,9 +58,10 @@ public class Game {
                     return currentQuest.getId();
                 }
             } else if(currentDecision.isFightDecision()){
-                currentEnemy = new Enemy(currentDecision.getEnemyName(), currentDecision.getEnemyHealth());
+                Battle battle = new Battle(player, currentEnemy);
 
-                if(winFight(player, currentEnemy)){
+
+                if(battle.fight()){
                     return currentDecision.getNextQuestId();
                 } else {
                     return currentQuest.getId();
@@ -75,16 +76,7 @@ public class Game {
         }
     }
 
-    public boolean winFight(Player player, Enemy enemy){
-        int roundNum = 0;
-        System.out.println("Да начнется битва!");
-        while (player.getHealth() > 0 || enemy.getHealth() > 0){
-            ++roundNum;
-            System.out.println("РАУНД № " + roundNum);
-            System.out.println("Выберите действие: ");
-        }
-        return true;
-    }
+
 
     public Map<Integer, Quest> getQuests() {
         return quests;
