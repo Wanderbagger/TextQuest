@@ -16,10 +16,18 @@ public abstract class Person {
 
     public List<Attack> generateStandartattackList(){
         List<Attack> attackList = new ArrayList<>();
-        Attack bump = new Attack("Удар кулаком", 80, 1, 4, "нанес сильный удар кулаком");
+        Attack bump = new Attack("Удар кулаком", 80, 1, 4, "нанес мощный удар кулаком");
         Attack hit = new Attack("Удар ногой", 70, 3, 6, "нанес сильный удар ногой");
         attackList.add(bump);
         attackList.add(hit);
         return attackList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

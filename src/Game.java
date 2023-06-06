@@ -10,18 +10,20 @@ public class Game {
     boolean isGameStopped = false; // заготовка под остановку игры
     Quest currentQuest; // текущий квест = заготовка для сохранения/загрузки
     int currentQuestId = 1; // инициализировали поле номером текущего квеста
-    Enemy currentEnemy;
+
 
     public Game(Player player) {
         this.player = player;
     }
 
-    public static void main(String[] args) throws IOException {
-        Player player = new Player("Отважный Гога");
+    public static void main(String[] args) {
+        Player player = new Player("Отважный Шляхов");
         Game game = new Game(player);
         Initializer initializer = new Initializer();
         game.setQuests(initializer.read(player.getName())); // инициализация игры = считывание квестов из текстового файла
-        game.play(game);
+        Enemy currentEnemy = new Enemy("Ужасная Власова", 100);
+        Battle battle = new Battle(player , currentEnemy);
+        battle.fight();
     }
 
     public void play(Game game) throws IOException { //игра идет,  пока не вернулся айдишник 0 или меньше
@@ -58,14 +60,7 @@ public class Game {
                     return currentQuest.getId();
                 }
             } else if(currentDecision.isFightDecision()){
-                Battle battle = new Battle(player, currentEnemy);
 
-
-                if(battle.fight()){
-                    return currentDecision.getNextQuestId();
-                } else {
-                    return currentQuest.getId();
-                }
             }
             System.out.println(currentDecision.getResult());
             return currentDecision.getNextQuestId();

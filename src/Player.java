@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Player extends Person{ // заготовка под игрока
    private String name;
-   private int health;
+   private int health = 100;
    private Map<String, Integer> inventory = new HashMap<>();
     private List<Attack> attackList = generateStandartattackList();
 

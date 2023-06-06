@@ -13,5 +13,23 @@ public class Attack {
         this.MESSAGE = MESSAGE;
     }
 
+    public String getNAME() {
+        return NAME;
+    }
 
+    public int getPROBABILITY() {
+        return PROBABILITY;
+    }
+
+    public int getMIN_DAMAGE() {
+        return MIN_DAMAGE;
+    }
+
+    public int getMAX_DAMAGE() {
+        return MAX_DAMAGE;
+    }
+
+    public String getMESSAGE() {
+        return MESSAGE;
+    }
 }

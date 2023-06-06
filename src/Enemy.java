@@ -8,7 +8,7 @@ public class Enemy extends Person {
     private int health;
     private List<Attack> attackList;
 
-    public Enemy(String name, int health, List<Attack> attackList) {
+    public Enemy(String name, int health) {
         this.name = name;
         this.health = health;
         attackList = generateStandartattackList();
